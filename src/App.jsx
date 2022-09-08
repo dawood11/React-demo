@@ -1,35 +1,23 @@
 import './App.css';
 
-import PrimaryButton from './components/common/PrimaryButton';
+import Counter from './components/Counter';
+import NameList from './components/NameList';
+import { useState } from 'react';
 
 const App = () => {
+  const [adminMode, setAdminMode] = useState(false)
 
-  const handleClick = () => {
-    console.log("Hei verden! :)");
-  };
 
   return (
     <div className={"App"}>
-      <h1>Hello wsorld</h1>
-      <PrimaryButton
-        disableBtn={true}
-        text={"Ikke klikk meg!"}
-        onClick={handleClick}
-      />
-
-      <PrimaryButton
-        disableBtn={false}
-        text={"Klikk meg!"}
-        onClick={handleClick}
-      />
-
-      <PrimaryButton
-        disableBtn={false}
-        text={"JEG HAR CHILDREEEEEEEEEEEEN!"}
-        onClick={handleClick}
-      >
-        <h1>dhldjhføgjdfhøg</h1>
-      </PrimaryButton>
+      <button onClick={() => setAdminMode(!adminMode)}>Hehe</button>
+      <Counter />
+      <hr />
+      <NameList adminMode={adminMode}/>
+      <hr />
+      <NameList adminMode={adminMode}/>
+      <hr />
+      <NameList adminMode={adminMode}/>
     </div>
   );
 }
