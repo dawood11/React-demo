@@ -1,8 +1,20 @@
+import { useEffect, useState } from 'react';
+
 import PrimaryButton from './common/PrimaryButton';
-import { useState } from 'react';
 
 const Counter = () => {
   const [counterState, setCounterState] = useState(10);
+  const [message, setMessage] = useState('');
+
+  useEffect(() => {
+    if (counterState === 15) {
+      setMessage('hurraaa!!!!');
+    }
+  }, [counterState]);
+
+  useEffect(() => {
+    setCounterState(10);
+  }, [message]);
   
   const handleIncrement = () => {
     setCounterState(counterState + 1);
@@ -11,7 +23,7 @@ const Counter = () => {
   return (
     <div>
       <h1>Counter: {counterState}</h1>
-      
+      <h1>{message}</h1>
       <PrimaryButton
         disableBtn={false}
         text={"Increment"}
