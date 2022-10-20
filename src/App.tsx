@@ -9,9 +9,9 @@ import { allMyStudents } from './service/allMyStudents';
 
 const App = () => {
   const [adminMode, setAdminMode] = useState(false)
-  const [studentsList, setStudentsList] = useState(allMyStudents);
+  const [studentsList] = useState(allMyStudents);
   const [avgAge, setAvgAge] = useState(0);
-  const [chosenStudent, setChosenStudent] = useState(null);
+  const [chosenStudent, setChosenStudent] = useState<any>(null);
 
   useEffect(() => {
     console.log(chosenStudent);

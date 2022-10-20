@@ -1,4 +1,4 @@
-const PrimaryButton = (props) => {
+const PrimaryButton = (props: any) => {
   const {disableBtn, text} = props;
 
   // console.log(props);

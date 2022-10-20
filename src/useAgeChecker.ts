@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-const useAgeChecker = (age) => {
+const useAgeChecker = (age: any) => {
   const [ageMessage, setAgeMessage] = useState('');
 
   useEffect(() => {

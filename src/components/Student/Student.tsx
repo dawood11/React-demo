@@ -1,4 +1,4 @@
-export const Student = (props) => {
+export const Student = (props: any) => {
   const { currentStudent, clickableBtn } = props;
 
   return (
