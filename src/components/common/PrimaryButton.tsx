@@ -1,7 +1,7 @@
-const PrimaryButton = (props: any) => {
-  const {disableBtn, text} = props;
+import { PrimaryButtonPropType } from './PrimaryButton.types';
 
-  // console.log(props);
+const PrimaryButton = (props: PrimaryButtonPropType) => {
+  const {disableBtn, text} = props;
 
   return (
     <button

@@ -1,32 +1,28 @@
 import './App.css';
 
-import { useEffect, useState } from 'react';
+import { StudentType, allMyStudents } from './service/allMyStudents';
 
 import Counter from './components/Counter';
 import NameList from './components/NameList';
 import { Student } from './components/Student/Student';
-import { allMyStudents } from './service/allMyStudents';
+import { useState } from 'react';
 
 const App = () => {
   const [adminMode, setAdminMode] = useState(false)
-  const [studentsList] = useState(allMyStudents);
+  const [studentsList] = useState<StudentType[]>(allMyStudents);
   const [avgAge, setAvgAge] = useState(0);
-  const [chosenStudent, setChosenStudent] = useState<any>(null);
+  const [chosenStudent, setChosenStudent] = useState<StudentType | null>(null);
 
-  useEffect(() => {
-    console.log(chosenStudent);
-  }, [chosenStudent]);
-
-  const handleAvgAge = () => {
+  const handleAvgAge = (): void => {
     let totalAge = 0;
-    studentsList.map((student) => totalAge += student.age);
+    studentsList.map((student: StudentType) => totalAge += student.age);
     setAvgAge(totalAge / studentsList.length);
   };
 
   return (
     <div className={"App"}>
       <div id={'new_project'}>
-        {studentsList.map((student, index) => (
+        {studentsList.map((student: StudentType, index) => (
           <Student
             key={index}
             currentStudent={student}

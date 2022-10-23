@@ -1,4 +1,11 @@
-export const Student = (props: any) => {
+import { StudentType } from '../../service/allMyStudents';
+
+interface StudentPropType {
+  currentStudent: StudentType;
+  clickableBtn: () => void;
+};
+
+export const Student = (props: StudentPropType) => {
   const { currentStudent, clickableBtn } = props;
 
   return (

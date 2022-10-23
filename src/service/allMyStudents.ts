@@ -1,4 +1,9 @@
-export const allMyStudents = [
+export interface StudentType {
+  name: string;
+  age: number;
+};
+
+export const allMyStudents: StudentType[] = [
   {
     name: 'Renate',
     age: 22,

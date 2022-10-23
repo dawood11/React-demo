@@ -1,8 +1,12 @@
 import { useState } from "react";
 
-const NameList = (props: any) => {
+interface NameListPropType {
+  adminMode: boolean;
+};
+
+const NameList = (props: NameListPropType) => {
   const { adminMode } = props;
-  const [namesList, setNamesList] = useState(['Ulrik', 'Andre', 'Harpreet', 'Bjørn', 'Bjørn'])
+  const [namesList, setNamesList] = useState<string[]>(['Ulrik', 'Andre', 'Harpreet', 'Bjørn', 'Bjørn'])
   const [name, setName] = useState('');
 
   // const handleAddName = () => {
