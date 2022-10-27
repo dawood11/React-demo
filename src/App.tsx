@@ -5,6 +5,7 @@ import { StudentType, allMyStudents } from './service/allMyStudents';
 import Counter from './components/Counter';
 import NameList from './components/NameList';
 import { Student } from './components/Student/Student';
+import { StudentContext } from './Contexts/StudentContext';
 import { useState } from 'react';
 
 const App = () => {
@@ -20,30 +21,33 @@ const App = () => {
   };
 
   return (
-    <div className={"App"}>
-      <div id={'new_project'}>
-        {studentsList.map((student: StudentType, index) => (
-          <Student
-            key={index}
-            currentStudent={student}
-            clickableBtn={() => setChosenStudent(student)}
-          />
-        ))}
+    <StudentContext.Provider value={{ chosenStudent, setChosenStudent }}>
+      <div className={"App"}>
+        <div id={'new_project'}>
+          {studentsList.map((student: StudentType, index) => (
+            <Student
+              key={index}
+              currentStudent={student}
+              clickableBtn={() => setChosenStudent(student)}
+            />
+          ))}
 
-        <button onClick={handleAvgAge}>Regn ut gjennomsnitssalder</button>
+          <button onClick={handleAvgAge}>Regn ut gjennomsnitssalder</button>
 
-        <h1>Gjennomsnitts alder: {avgAge}</h1>
-        {/* {chosenStudent === null ? <></> : <h1>The chosen one: {chosenStudent.name}</h1>} */}
-        <h1>The chosen one: {chosenStudent === null ? null : chosenStudent.name}</h1>
+          <h1>Gjennomsnitts alder: {avgAge}</h1>
+          {/* {chosenStudent === null ? <></> : <h1>The chosen one: {chosenStudent.name}</h1>} */}
+          <h1>The chosen one: {chosenStudent === null ? null : chosenStudent.name}</h1>
+        </div>
+        <hr />
+        <hr />
+        <button onClick={() => setAdminMode(!adminMode)}>Hehe</button>
+        <Counter />
+        <hr />
+
+
+        <NameList adminMode={adminMode} />
       </div>
-
-      <hr />
-      <hr />
-      <button onClick={() => setAdminMode(!adminMode)}>Hehe</button>
-      <Counter />
-      <hr />
-      <NameList adminMode={adminMode} />
-    </div>
+    </StudentContext.Provider>
   );
 }
 
