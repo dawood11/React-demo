@@ -1,15 +1,20 @@
 import './App.css';
 
 import { StudentType, allMyStudents } from './service/allMyStudents';
+import { useDispatch, useSelector } from 'react-redux';
 
 import Counter from './components/Counter';
 import NameList from './components/NameList';
+import { RootStateType } from './redux/store';
 import { Student } from './components/Student/Student';
 import { StudentContext } from './Contexts/StudentContext';
+import { toggleAdminMode } from './redux/adminSlice';
 import { useState } from 'react';
 
 const App = () => {
-  const [adminMode, setAdminMode] = useState(false)
+  // const [adminMode, setAdminMode] = useState(false)
+  const adminMode = useSelector((state: RootStateType) => state.admin.adminMode);
+  const dispatch = useDispatch();
   const [studentsList] = useState<StudentType[]>(allMyStudents);
   const [avgAge, setAvgAge] = useState(0);
   const [chosenStudent, setChosenStudent] = useState<StudentType | null>(null);
@@ -40,7 +45,7 @@ const App = () => {
         </div>
         <hr />
         <hr />
-        <button onClick={() => setAdminMode(!adminMode)}>Hehe</button>
+        <button onClick={() => dispatch(toggleAdminMode())}>Hehe</button>
         <Counter />
         <hr />
 

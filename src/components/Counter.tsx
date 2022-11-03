@@ -1,11 +1,16 @@
 import { useContext, useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 import PrimaryButton from './common/PrimaryButton';
+import { RootStateType } from '../redux/store';
 import { StudentContext } from '../Contexts/StudentContext';
+import { toggleAdminMode } from '../redux/adminSlice';
 
 const Counter = () => {
   const [counterState, setCounterState] = useState(10);
   const [message, setMessage] = useState('');
+  const adminMode = useSelector((state: RootStateType) => state.admin.adminMode)
+  const dispatch = useDispatch();
 
   const studentLocalContext = useContext(StudentContext);
 
@@ -21,6 +26,8 @@ const Counter = () => {
 
   const handleIncrement = () => {
     setCounterState(counterState + 1);
+    console.log(adminMode);
+    dispatch(toggleAdminMode());
   };
 
   return (
